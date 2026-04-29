@@ -31,7 +31,7 @@ public class PlayerMovementV1 : MonoBehaviour
     {
         moveInput = Input.GetAxisRaw("Horizontal");
         isGrounded= Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-        Debug.Log(isGrounded);
+        //Debug.Log(isGrounded);
         // for moving the sprites side by side 
         if (moveInput > 0)
             sr.flipX = false;

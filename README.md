@@ -1,6 +1,6 @@
 # GDIM33 Vertical Slice
 ## Milestone 1 Devlog
-Milestone 1 Devlog goes here.
+1. the state graph machine works by using the on update method and 
 ## Milestone 2 Devlog
 Milestone 2 Devlog goes here.
 ## Milestone 3 Devlog
