@@ -2325,8 +2325,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data:
-    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
-    _objectReferences: []
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"StopMovement","value":{"$content":0,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"PlayerMovementV1,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+    _objectReferences:
+    - {fileID: 1354231325}
 --- !u!1 &2120514033
 GameObject:
   m_ObjectHideFlags: 0
