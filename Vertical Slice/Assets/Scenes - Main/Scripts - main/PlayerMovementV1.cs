@@ -14,15 +14,16 @@ public class PlayerMovementV1 : MonoBehaviour
     public LayerMask groundLayer; 
 
     private Rigidbody2D rb;
-    private bool isGrounded;
+    public bool isGrounded;
     public float moveInput; 
-
+    // orignally it was private bool isGrounded, however I changed it to public for my visual scripting graph 
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        
     }
 
     // Update is called once per frame
