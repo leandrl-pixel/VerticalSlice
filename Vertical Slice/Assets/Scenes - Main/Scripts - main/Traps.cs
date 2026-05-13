@@ -15,7 +15,7 @@ public class Traps : MonoBehaviour
             PlayerHealth health = collision.gameObject.GetComponent<PlayerHealth>();
             if (health != null)
             {
-                health.Takedamage(damage);
+                health.TakeDamage(damage);
             }
             else
             {
