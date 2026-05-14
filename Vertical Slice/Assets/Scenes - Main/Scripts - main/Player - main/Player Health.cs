@@ -11,7 +11,9 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealth;
     // public Text healthtext;
     // il probably make a text health ui later this is lowkey tough
-    public Transform respawnPoint; 
+    public Transform respawnPoint;
+    // above is for respawning purposes 
+    private Rigidbody2D rb; 
 
     private void Start()
     {
