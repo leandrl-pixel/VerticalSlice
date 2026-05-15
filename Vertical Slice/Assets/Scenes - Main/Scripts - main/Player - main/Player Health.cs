@@ -1,42 +1,101 @@
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-//using TMPro; 
 
 public class PlayerHealth : MonoBehaviour
 {
-
     public float MaxHealth = 100;
     public float currentHealth;
-    // public Text healthtext;
-    // il probably make a text health ui later this is lowkey tough
+
+    public TMP_Text healthtext;
+
+    private SpriteRenderer sr;
     public Transform respawnPoint;
-    // above is for respawning purposes 
+    public PlayerMovementV1 movementScript;
+    public float respawnDelay = 1.5f;
     private Rigidbody2D rb; 
+    private Animator animator;
+    
+    public bool isDead = false; 
 
     private void Start()
     {
         currentHealth = MaxHealth;
-        Debug.Log("Current player health:" + currentHealth);
+        sr = GetComponent<SpriteRenderer>();
+         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();    
+        UpdateHealthUI();
+
+        Debug.Log("Current player health: " + currentHealth);
+
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        Debug.Log("Player took damage current health:" + currentHealth); 
+        currentHealth = Mathf.Clamp(currentHealth, 0, MaxHealth);
 
-        if (currentHealth <= 0)
+        Debug.Log("Player took damage. Current health: " + currentHealth);
+
+        UpdateHealthUI();
+        if (currentHealth > 0)
         {
-            Debug.Log("player is dead");
+            StartCoroutine(DamageFlash());
+        }
+        
+
+        if (currentHealth <= 0 && !isDead)
+        {
+            Debug.Log("Player is dead");
+            StartCoroutine(Respawn()); 
+        }
+    }
+    IEnumerator Respawn ()
+    {
+        isDead = true;
+        if (healthtext != null)
+            healthtext.text = "You Died! Respawning...";
+        if (movementScript != null)
+            movementScript.enabled = false;
+
+        if (rb != null)
+            rb.velocity = Vector2.zero;
+
+        if (animator != null)
+            animator.SetTrigger("Die"); 
+
+        yield return new WaitForSeconds(respawnDelay);
+        transform.position = respawnPoint.position;
+        currentHealth = MaxHealth; 
+        UpdateHealthUI() ;
+
+        if(animator != null)
+        {
+            animator.Play("Idle"); 
         }
 
+
+        if (movementScript != null)
+            movementScript.enabled = true; 
+        isDead = false;
+
+    }
+    void UpdateHealthUI()
+    {
+        if (healthtext != null)
+        {
+            healthtext.text = "HP: " + currentHealth;
+        }
     }
 
-
-    // Update is called once per frame
-    void Update()
+    IEnumerator DamageFlash()
     {
-        
+        if (sr != null)
+        {
+            sr.color = Color.red;
+            yield return new WaitForSeconds(0.2f);
+            sr.color = Color.white;
+        }
     }
 }

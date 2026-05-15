@@ -7,6 +7,10 @@ public class PlayerMovementV1 : MonoBehaviour
     // this is for movement
     public float moveSpeed = 5.0f;
     public float jumpForce = 10.0f;
+    // a bool below for double jump 
+    public bool hasExtraJump = false;
+
+
 
     // need something to check if the ground works
     public Transform groundCheck;
@@ -38,12 +42,21 @@ public class PlayerMovementV1 : MonoBehaviour
         else if (moveInput < 0)
             sr.flipX = true;
         // jumps either w or space 
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-
-
+            if (isGrounded)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            }
+          
         }
+        else if (hasExtraJump)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce); 
+            hasExtraJump = false; //uses the extra jump once 
+        }
+            
+        
     }
     void FixedUpdate()
     {
