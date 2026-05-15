@@ -28,7 +28,9 @@
 4.Build a platforming section that requires the extra jump.
 5. Test by collecting the star gameobject and reaching the higher platform.
 ### Visual scripting  graph: moon poweerup
-1. One of the main Visual Scripting graphs in my game controls a star power that grants the player a temporary extra jump. The power up object uses a trigger collider and a Script Machine. When the player enters the trigger the graph checks whether the object has the Player tag using a Compare Tag node. If the condition is true then the graph gets the player's PlayerMovementV1 component and sets the hasExtraJump Boolean variable to true. This variable is defined in my C# movement script and allows the player to perform one extra jump while airborne. After activating the powerup the start object disables itself so it disappears from the level. This graph bridges Visual Scripting with code because the graph directly uses a public variable in my C# script and influences it  
+1. One of the main Visual Scripting graphs in my game controls a star power that grants the player a temporary extra jump. The power up object uses a trigger collider and a Script Machine. When the player enters the trigger the graph checks whether the object has the Player tag using a Compare Tag node. If the condition is true then the graph gets the player's PlayerMovementV1 component and sets the hasExtraJump Boolean variable to true. This variable is defined in my C# movement script and allows the player to perform one extra jump while airborne. After activating the powerup the start object disables itself so it disappears from the level. This graph bridges Visual Scripting with code because the graph directly uses a public variable in my C# script and influences it
+
+2. <img width="1918" height="957" alt="Screenshot 2026-05-15 154919" src="https://github.com/user-attachments/assets/b4de1b2e-53b3-4e03-b23d-770f32584541" />
 
 
 ## Milestone 3 Devlog
