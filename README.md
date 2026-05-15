@@ -1,4 +1,4 @@
-<img width="620" height="773" alt="Screenshot 2026-05-15 155531" src="https://github.com/user-attachments/assets/fceeeb19-262d-44b4-b9ae-7659171cbf89" />
+
 # GDIM33 Vertical Slice
 ## Milestone 1 Devlog
 1. one visual script graph that I used to control the players movement state was through a state machine. The graph has 3 different states that are idle, move, and airbone( jump). The transitions between these states are all based on the players movment inputs and if the player is on the ground. For example when the player presses a movement key the input value changes and the state transistions back to idle. The graph uses if statemes to see if the absolute value of movment based on the input of the player to determine when to switch states. Each state triggers a visual change by changing the players color when they are entering a state, which helps to check if the state machine is functioning right during gameplay, there is also debug logs in place to ensure as well that everything is working as intended. 
