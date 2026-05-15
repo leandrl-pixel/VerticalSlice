@@ -1,3 +1,4 @@
+
 # GDIM33 Vertical Slice
 ## Milestone 1 Devlog
 1. one visual script graph that I used to control the players movement state was through a state machine. The graph has 3 different states that are idle, move, and airbone( jump). The transitions between these states are all based on the players movment inputs and if the player is on the ground. For example when the player presses a movement key the input value changes and the state transistions back to idle. The graph uses if statemes to see if the absolute value of movment based on the input of the player to determine when to switch states. Each state triggers a visual change by changing the players color when they are entering a state, which helps to check if the state machine is functioning right during gameplay, there is also debug logs in place to ensure as well that everything is working as intended. 
@@ -31,8 +32,13 @@
 1. One of the main Visual Scripting graphs in my game controls a star power that grants the player a temporary extra jump. The power up object uses a trigger collider and a Script Machine. When the player enters the trigger the graph checks whether the object has the Player tag using a Compare Tag node. If the condition is true then the graph gets the player's PlayerMovementV1 component and sets the hasExtraJump Boolean variable to true. This variable is defined in my C# movement script and allows the player to perform one extra jump while airborne. After activating the powerup the start object disables itself so it disappears from the level. This graph bridges Visual Scripting with code because the graph directly uses a public variable in my C# script and influences it
 2. <img width="1918" height="957" alt="Screenshot 2026-05-15 154919" src="https://github.com/user-attachments/assets/b4de1b2e-53b3-4e03-b23d-770f32584541" />
 3. Another visual scripting is my state graph I used it to controls the players idle, move, and airborne states. The state graph reads the public variables of moveinput and siGrounded from my PlayerMovementV1 script to see when the transistion between states. Earlier i did this but the states changes based on the color both visually and animation wise, back when i did not have animations I used colors to signify the different states if they were working properly. This provides visual feedback meaning that the state machine si working 
+4. <img width="620" height="773" alt="Screenshot 2026-05-15 155531" src="https://github.com/user-attachments/assets/0acf7f15-c7d6-4651-955a-b608978bbbbf" />
+5. <img width="1345" height="827" alt="Screenshot 2026-05-15 162424" src="https://github.com/user-attachments/assets/3dae3c42-08f2-41f2-8915-918d0d33bb28" />
+6. Above is an example of how it looks like inside the transitions in this case, this transistion is going from airborne to idle 
 ### Unity system Graded 
 1. The unity system that I would like to be graded on is the animator system. Its shown when the player dies and loses all there health, the death animation happens and they remain in the dead state for a short amount of time and then it goes back to normal (idle) after the player respawns in their current checkpoint. 
+
+
 ## Milestone 3 Devlog
 Milestone 3 Devlog goes here.
 ## Milestone 4 Devlog
