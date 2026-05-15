@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    public Transform respawnLocation;      // Optional: where player respawns
-    public ParticleSystem confettiEffect;  // Optional particle effect
+    public Transform respawnLocation;      // where player respawns
+    public ParticleSystem confettiEffect;  // particle effect
     public Color activatedColor = Color.green;
+    public GameObject directionArrow; // for drecitonality in playtesting 
+
 
     private SpriteRenderer sr;
     private bool activated = false;
@@ -34,6 +36,11 @@ public class Checkpoint : MonoBehaviour
                     health.respawnPoint = respawnLocation;
                 else
                     health.respawnPoint = transform;
+                if (directionArrow != null)
+                {
+                    directionArrow.SetActive(false);
+                }
+                activated = true;
             }
 
             // Play confetti if assigned

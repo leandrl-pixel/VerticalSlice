@@ -7,28 +7,30 @@
 ## Milestone 2 Devlog
 ### Before Coding: complicating feature summary and the task breakdown 
 #### Complicated Gameplay Feature 
-1. The complicating gameplay feature for my platformer is a star powerup that grants the player one extra jump. This temporary ability allows the player to reach higher platform are impossible to clear with the normal jump alone. The powerups turns a standard platforming section into a small puzzle because the player must first collect the star and then use the extra jump wisely to continue.
-##### Big Step 1: Create the Moon Powerup pickup 
-1. Create a moon GameObject with a SpriteRenderer and CircleCollider2D.
+1. The complicating gameplay feature for my platformer is a star powerup that grants the player one extra jump. This temporary ability allows the player to reach higher platforms that are normally impossible to clear with the normal jump alone. The powerups turns a standard platforming section into a small puzzle because the player must first collect the star and then use the extra jump wisely to continue.
+##### Big Step 1: Create the star Powerup pickup 
+1. Create a star GameObject with a SpriteRenderer and CircleCollider2D. If you dont have one use a placeholder circle sprite 
 2. Set the CircleCollider2D to Is Trigger.
 3. Add a Script Machine and create a Visual Scripting graph.
 4. Detect when the player enters the trigger.
 5. Check if the colliding object has the Player tag.
-6. Test by printing a Debug.Log when the player touches the moon.
+6. Test by printing a Debug.Log when the player touches the star.
 ##### Step 2 
 1.Add a public Boolean variable hasExtraJump to PlayerMovementV1.cs.
 2. In the Visual Scripting graph  get the player's PlayerMovementV1 component.
 3. Set hasExtraJump to true.
-4. Disable the moon object so it disappears.
+4. Disable the star game object so it disappears.
 5. Test by confirming the variable changes in the Inspector.
 ##### Step 3 
 1. Update the jump logic to check for hasExtraJump while airborne.
 2. Allow one additional jump if the variable is true.
 3.Set hasExtraJump back to false after the extra jump is used.
 4.Build a platforming section that requires the extra jump.
-5. Test by collecting the moon and reaching the higher platform.
+5. Test by collecting the star gameobject and reaching the higher platform.
 ### Visual scripting  graph: moon poweerup
-1. One of the main Visual Scripting graphs in my game controls a moon-shaped power-up that grants the player a temporary extra jump. The power-up object uses a trigger collider and a Script Machine. When the player enters the trigger, the graph checks whether the object has the Player tag using a Compare Tag node. If the condition is true, the graph gets the player's PlayerMovementV1 component and sets the hasExtraJump Boolean variable to true. This variable is defined in my C# movement script and allows the player to perform one extra jump while airborne. After activating the power-up, the moon object disables itself so it disappears from the level. This graph bridges Visual Scripting with code because the graph directly modifies a public variable in my C# script.
+1. One of the main Visual Scripting graphs in my game controls a star power that grants the player a temporary extra jump. The power up object uses a trigger collider and a Script Machine. When the player enters the trigger the graph checks whether the object has the Player tag using a Compare Tag node. If the condition is true then the graph gets the player's PlayerMovementV1 component and sets the hasExtraJump Boolean variable to true. This variable is defined in my C# movement script and allows the player to perform one extra jump while airborne. After activating the powerup the start object disables itself so it disappears from the level. This graph bridges Visual Scripting with code because the graph directly uses a public variable in my C# script and influences it  
+
+
 ## Milestone 3 Devlog
 Milestone 3 Devlog goes here.
 ## Milestone 4 Devlog

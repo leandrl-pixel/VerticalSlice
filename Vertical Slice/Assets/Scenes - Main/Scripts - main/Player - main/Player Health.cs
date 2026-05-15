@@ -16,7 +16,7 @@ public class PlayerHealth : MonoBehaviour
     public float respawnDelay = 1.5f;
     private Rigidbody2D rb; 
     private Animator animator;
-    
+    private GameObject[] jumpPowerUps; 
     public bool isDead = false; 
 
     private void Start()
@@ -26,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
          rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();    
         UpdateHealthUI();
-
+        jumpPowerUps = GameObject.FindGameObjectsWithTag("JPowerUp");
         Debug.Log("Current player health: " + currentHealth);
 
     }
@@ -51,24 +51,46 @@ public class PlayerHealth : MonoBehaviour
             StartCoroutine(Respawn()); 
         }
     }
+    private void ResetPowerUps()
+    {
+        
+        foreach(GameObject powerUp in jumpPowerUps)
+        {
+            powerUp.SetActive(true); 
+        }
+    }
     IEnumerator Respawn ()
     {
         isDead = true;
         if (healthtext != null)
-            healthtext.text = "You Died! Respawning...";
+            healthtext.text = "You Died! Respawning...(hint star is a powerup, more content coming soon)";
         if (movementScript != null)
             movementScript.enabled = false;
 
         if (rb != null)
             rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0f; 
+        //fixed bug where trap on edge makes player move 
+        rb.constraints = RigidbodyConstraints2D.FreezeAll; 
+
+        if (rb != null) 
+            rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        //prevents all movement and physics form reacting
+        // after respawn the freezeroation goes back to normal 
+
 
         if (animator != null)
             animator.SetTrigger("Die"); 
 
         yield return new WaitForSeconds(respawnDelay);
         transform.position = respawnPoint.position;
-        currentHealth = MaxHealth; 
+        currentHealth = MaxHealth;
+        ResetPowerUps();
+        movementScript.hasExtraJump = false;
         UpdateHealthUI() ;
+       // what this respawn does it is it influences how the health responds and allows for the poweer ups to reappear after player dies 
 
         if(animator != null)
         {
