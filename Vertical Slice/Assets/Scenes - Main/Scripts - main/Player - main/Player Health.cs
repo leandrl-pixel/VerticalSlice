@@ -9,6 +9,8 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealth;
 
     public TMP_Text healthtext;
+    // below is the image for the health added 
+    public Image healthBarFill; 
 
     private SpriteRenderer sr;
     public Transform respawnPoint;
@@ -108,6 +110,10 @@ public class PlayerHealth : MonoBehaviour
         if (healthtext != null)
         {
             healthtext.text = "HP: " + currentHealth;
+        }
+        if (healthBarFill != null)
+        {
+            healthBarFill.fillAmount = currentHealth / MaxHealth;
         }
     }
 
