@@ -42,7 +42,16 @@
 
 
 ## Milestone 3 Devlog
-Milestone 3 Devlog goes here.
+### Q1: Shader graph 
+1. For the third milestone I made a glowing effect for my trap using the shader graph. This shader is added to the trap tiles in my level so they stand out visually and make it so the player knows something is up with the traps, essentially making them seen as dangerous areas. The shader uses a texture sampling from the trap sprite that makes a glow effect on top of the normal color. Making traps more easier to spot for the player to notice when they're playing the game. This connects to the rendering pipeline because the shader graph changes how the sprite is drawn before it shows in the game's view. The graders can find this shader on the trap objects/ tilemaps in the level. Here is my screenshot below of the shadergraph. As for the technical aspects of how this shader graph works it uses a time node multiplied by the speed value then a fraction node to loop the animation. This animation value does something to the UV for the shine texture and that is added to the sprites. This makes a moving shine effect on the traps and this overall makes it stand out as something dangerous for the player to not touch. Makes it more lively the traps overall. 
+2. 
+### Q2: Gameplay improvements based on gameplay 
+1. Based on the playtesting I improved the gameplay by making the traps appear more clearer and added more traps to make the progression harder which was an issue in my game throughout my earlier stages of making it. I also updated the User interface with the health, originally it was just a simple update text of numbers but now there is a bar for health to indicate how much the player has visually lost while on the other side it shows a more accurate representation of how much health the player has currently (the numbers). 
+### Q3: New Content Added 
+1. Since the last milestone I added more content to close the main gameplay loop. The level now includes more platforming sections, trap hazards, an updated star power up that allows for  an extra jump (added a different shader inside this one), checkpoints, and respawn behavior. This allows the player to repeat the core loop multiple times. Move through the level, avoid traps, collect the power up, use the extra jump to reach new areas, and continue toward the end of the level.
+
+
+
 ## Milestone 4 Devlog
 Milestone 4 Devlog goes here.
 ## Final Devlog
