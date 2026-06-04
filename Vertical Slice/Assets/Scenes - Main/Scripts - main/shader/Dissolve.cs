@@ -19,7 +19,7 @@ public class Dissolve : MonoBehaviour
 
     private void OnEnable()
     {
-        fade = 1f;
+        fade = 0.5f;
         isDissolving = false;
 
         material.SetFloat("_Fade", fade);
@@ -51,6 +51,10 @@ public class Dissolve : MonoBehaviour
     {
         yield return new WaitForSeconds(disableDelay);
 
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }
+
+// notes I need to change something in regards to the fade or something to do with the dissolve it needs to be set at 0 and then change the value
+//also the dissolve effect does not trigger back to normal it stays in place at 0 once it is completely 
+// maybe not actually the effects work as intended, the dissolving from the object dissolves properly and everything resets as intended 
