@@ -43,6 +43,7 @@ public class Dissolve : MonoBehaviour
             fade = Mathf.Clamp01(fade);
 
             material.SetFloat("_Fade", fade);
+            Debug.Log (fade);
         }
     }
 
@@ -50,6 +51,6 @@ public class Dissolve : MonoBehaviour
     {
         yield return new WaitForSeconds(disableDelay);
 
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 }
