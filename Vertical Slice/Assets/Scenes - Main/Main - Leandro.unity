@@ -12119,7 +12119,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: 9500a7feee7369a4294caab02a5c1686, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17385,7 +17385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc9d4ab6ce511242841baf6b77466ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dissolveSpeed: 0.5
+  dissolveSpeed: 1
   disableDelay: 1.5
 --- !u!1001 &1795745749
 PrefabInstance:
