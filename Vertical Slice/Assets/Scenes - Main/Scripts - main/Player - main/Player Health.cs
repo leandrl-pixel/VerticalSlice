@@ -61,11 +61,20 @@ public class PlayerHealth : MonoBehaviour
             powerUp.SetActive(true); 
         }
     }
+    private void ResetSpikeHeads()
+    {
+        SpikeHead[] spikeHeads = FindObjectsOfType<SpikeHead>();
+
+        foreach (SpikeHead spike in spikeHeads)
+        {
+            spike.ResetSpikeHead();
+        }
+    }
     IEnumerator Respawn ()
     {
         isDead = true;
         if (healthtext != null)
-            healthtext.text = "You Died! Respawning...(hint star is a powerup, more content coming soon)";
+            healthtext.text = "You Died! Respawning...(hint star is a powerup)";
         if (movementScript != null)
             movementScript.enabled = false;
 
@@ -90,6 +99,7 @@ public class PlayerHealth : MonoBehaviour
         transform.position = respawnPoint.position;
         currentHealth = MaxHealth;
         ResetPowerUps();
+        ResetSpikeHeads(); 
         movementScript.hasExtraJump = false;
         UpdateHealthUI() ;
        // what this respawn does it is it influences how the health responds and allows for the poweer ups to reappear after player dies 

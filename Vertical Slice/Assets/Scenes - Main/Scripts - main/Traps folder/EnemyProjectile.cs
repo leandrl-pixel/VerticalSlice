@@ -25,9 +25,10 @@ public class EnemyProjectile : EnemyDamage
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
-        // base is a keyword that automatically lets you access the parent scirpt 
-        // so when we write this line it means 
-        // execute logic  from parent script first 
-        gameObject.SetActive(false); //when this hit another collider this deactivates the gameobject
+
+        if (collision.CompareTag("Player"))
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

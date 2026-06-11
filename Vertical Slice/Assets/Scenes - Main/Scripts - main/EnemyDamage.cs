@@ -1,9 +1,7 @@
-
 using UnityEngine;
-
 public class EnemyDamage : MonoBehaviour
 {
-    [SerializeField] private int damage = 10;
+    [SerializeField] protected int damage = 10;
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,8 +13,6 @@ public class EnemyDamage : MonoBehaviour
             {
                 health.TakeDamage(damage);
             }
-
-            gameObject.SetActive(false);
         }
     }
 }
