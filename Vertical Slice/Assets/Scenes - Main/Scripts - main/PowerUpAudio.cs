@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerUpAudio : MonoBehaviour
 {
-    [SerializeField] private AudioClip pickupSound;
+    [SerializeField] private AudioClip powerUpSound;
 
     private AudioSource audioSource;
 
@@ -13,11 +13,13 @@ public class PowerUpAudio : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlayPickupSound()
+    public void PlayPowerUpSound()
     {
-        if (audioSource != null && pickupSound != null)
+        Debug.Log("Playing powerup sound");
+
+        if (audioSource != null && powerUpSound != null)
         {
-            audioSource.PlayOneShot(pickupSound);
+            audioSource.PlayOneShot(powerUpSound);
         }
     }
 }
