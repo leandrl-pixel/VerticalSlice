@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FireTrapVTwo : MonoBehaviour
@@ -13,6 +12,10 @@ public class FireTrapVTwo : MonoBehaviour
     [Header("Damage Over Time")]
     [SerializeField] private float damageInterval = 1f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip activateSound;
+
+    private AudioSource audioSource;
     private Animator anim;
     private SpriteRenderer spriteRend;
 
@@ -25,6 +28,7 @@ public class FireTrapVTwo : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -70,6 +74,11 @@ public class FireTrapVTwo : MonoBehaviour
         spriteRend.color = Color.white;
         active = true;
         anim.SetBool("activated", true);
+
+        if (audioSource != null && activateSound != null)
+        {
+            audioSource.PlayOneShot(activateSound);
+        }
 
         yield return new WaitForSeconds(activeTime);
 
