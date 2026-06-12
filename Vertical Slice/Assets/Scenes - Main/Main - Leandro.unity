@@ -15699,7 +15699,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1089236339
 Transform:
   m_ObjectHideFlags: 0
@@ -16636,6 +16636,8 @@ MonoBehaviour:
   respawnPoint: {fileID: 1203924773}
   movementScript: {fileID: 1354231325}
   respawnDelay: 3.5
+  hurtSound: {fileID: 8300000, guid: 2b21ef916f6943c439b71a7c74568878, type: 3}
+  deathSound: {fileID: 8300000, guid: 8ff2a2d7e79f81c40ac447512f879374, type: 3}
   isDead: 0
 --- !u!1001 &1355489147
 PrefabInstance:

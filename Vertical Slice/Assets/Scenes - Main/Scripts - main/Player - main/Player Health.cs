@@ -18,6 +18,10 @@ public class PlayerHealth : MonoBehaviour
     public float respawnDelay = 1.5f;
     private Rigidbody2D rb; 
     private Animator animator;
+    private AudioSource audioSource;
+
+    [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private AudioClip deathSound;
     private GameObject[] jumpPowerUps; 
     public bool isDead = false; 
 
@@ -26,7 +30,9 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = MaxHealth;
         sr = GetComponent<SpriteRenderer>();
          rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();    
+        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+
         UpdateHealthUI();
         jumpPowerUps = GameObject.FindGameObjectsWithTag("JPowerUp");
         Debug.Log("Current player health: " + currentHealth);
@@ -40,6 +46,11 @@ public class PlayerHealth : MonoBehaviour
 
         Debug.Log("Player took damage. Current health: " + currentHealth);
 
+        if (currentHealth > 0 && audioSource != null && hurtSound != null)
+        {
+            audioSource.PlayOneShot(hurtSound);
+        }
+
         UpdateHealthUI();
         if (currentHealth > 0)
         {
@@ -50,6 +61,11 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0 && !isDead)
         {
             Debug.Log("Player is dead");
+            if (audioSource != null && deathSound != null)
+            {
+                audioSource.PlayOneShot(deathSound);
+            }
+
             StartCoroutine(Respawn()); 
         }
     }
@@ -79,24 +95,26 @@ public class PlayerHealth : MonoBehaviour
             movementScript.enabled = false;
 
         if (rb != null)
+        {
             rb.velocity = Vector2.zero;
-        rb.angularVelocity = 0f; 
-        //fixed bug where trap on edge makes player move 
-        rb.constraints = RigidbodyConstraints2D.FreezeAll; 
-
-        if (rb != null) 
-            rb.velocity = Vector2.zero;
-        rb.angularVelocity = 0f;
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        //prevents all movement and physics form reacting
-        // after respawn the freezeroation goes back to normal 
-
+            rb.angularVelocity = 0f;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
 
         if (animator != null)
-            animator.SetTrigger("Die"); 
+            animator.SetTrigger("Die");
 
         yield return new WaitForSeconds(respawnDelay);
+
         transform.position = respawnPoint.position;
+
+        if (rb != null)
+        {
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+       
         currentHealth = MaxHealth;
         ResetPowerUps();
         ResetSpikeHeads(); 
